@@ -1,0 +1,184 @@
+/* Color Variables */
+:root {
+    --navy: #0B1F3B;
+    --orange: #FF6A00;
+    --white: #FFFFFF;
+}
+
+/* Base Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.bg-navy {
+    background-color: var(--navy);
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--orange) !important;
+}
+
+/* Button Styles */
+.btn-orange {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+.btn-orange:hover {
+    background-color: #e05d00;
+    color: white;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+}
+
+/* Tableau Placeholder */
+.tableau-placeholder {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+/* Game Container */
+.game-container {
+    border: 2px solid var(--navy);
+}
+
+.game-output {
+    min-height: 100px;
+    border: 1px solid #dee2e6;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+    }
+    
+    .hero img {
+        margin: 0 auto;
+    }
+}
+
+/* Fullscreen Jordan background */
+.jordan-bg {
+    background-image: url("images/jordan23.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Centered overlay section */
+
+
+.info-box{
+  display:flex;
+  gap:40px;
+  background:black;
+  border:3px solid red;
+  border-radius:20px;
+
+
+  width:90%;
+  max-width:1200px;
+  padding:60px;
+
+  color:white;
+}
+
+.info-content{
+  flex:2;
+}
+
+.info-images{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.info-images img{
+  width:100%;
+  border-radius:10px;
+}
+
+
+/* YouTube Section */
+.video-section {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.video-section iframe {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+}
+
+
+
+/* Back to Home Button */
+.back-home-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.back-home-btn {
+    background-color: black;
+    color: white;
+    border: 2px solid red;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.back-home-btn:hover {
+    background-color: red;
+    color: white;
+}

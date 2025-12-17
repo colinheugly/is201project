@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game | Bear Necessities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+        <div class="container">
+            <a class="navbar-brand" href="#">Colin Heugly</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tableau.html">Tableau</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Game</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="scratch.html">Jordan?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h1 class="card-title">Team Generator</h1>
+            <p class="card-text">Insert Paragraph here</p>
+
+            <!-- Game Interface -->
+            <div class="game-container bg-light p-4 rounded mb-3 border">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <label for="sportSelect" class="form-label fw-semibold">Choose a sport</label>
+                  <select id="sportSelect" class="form-select">
+                    <option value="" selected disabled>Select one...</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Baseball">Baseball</option>
+                    <option value="Football">Football</option>
+                  </select>
+                </div>
+                <div class="col-md-4 d-grid">
+                  <button id="generateBtn" class="btn btn-orange btn-lg">
+                    Generate Team
+                  </button>
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <!-- Output -->
+              <div id="outputCard" class="p-4 bg-white rounded shadow-sm" style="display:none;">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                  <div>
+                    <h2 class="h4 mb-1" id="teamName">Team Name</h2>
+                    <div class="text-muted" id="teamMeta">Sport • City</div>
+                  </div>
+                  <span class="badge rounded-pill text-bg-dark px-3 py-2" id="sportBadge">Sport</span>
+                </div>
+
+                <div class="mt-3">
+                  <div class="fw-semibold mb-2">Uniform Colors</div>
+                  <div class="d-flex align-items-center gap-2 flex-wrap" id="colorSwatches"></div>
+                </div>
+
+                <div class="mt-4 d-flex gap-2 flex-wrap">
+                  <button id="copyBtn" class="btn btn-outline-secondary">Copy Team Name</button>
+                  <button id="regenBtn" class="btn btn-outline-primary">Generate Another</button>
+                </div>
+              </div>
+
+              <!-- Helper text -->
+              <div id="helperText" class="text-muted mt-2">
+                Pick a sport, then click <strong>Generate Team</strong>.
+              </div>
+            </div>
+
+            <small class="text-muted">
+              Tip: This generator mixes a city + a region-style name + a mascot, then assigns a uniform color combo.
+            </small>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // --- Data ---
+  const cities = [
+    "Riverside, CA",
+    "Albuquerque, NM",
+    "Louisville, KY",
+    "Birmingham, AL",
+    "Grand Rapids, MI",
+    "Provo, UT",
+    "Scranton, PA"
+  ];
+
+  const beginners = [
+    "Heartland", "Midland", "River Valley", "Frontier", "Highland",
+    "Iron Ridge", "Blue Ridge", "Grand Valley", "Southern Cross",
+    "Mountain View", "Desert Ridge", "Central Plains", "Lakeside",
+    "Pinnacle", "Thunder Ridge", "Apex", "Vanguard", "Summit",
+    "Crossroads", "Heritage"
+  ];
+
+  const mascots = [
+    "Vortex", "Phantoms", "Surge", "Blaze", "Avalanche",
+    "Wildcats", "Cougars", "Jaguars", "Scorpions", "Cyclones",
+    "Bandits", "Renegades", "Vipers", "Barracudas", "Mustangs",
+    "Wolverines", "Lynx", "Bobcats", "Rattlers", "Fury"
+  ];
+
+  const colorCombos = [
+    { name: "Red / Black", colors: ["#c1121f", "#111111"] },
+    { name: "Orange / Blue", colors: ["#ff6a00", "#1d4ed8"] },
+    { name: "Purple / Yellow", colors: ["#6d28d9", "#facc15"] },
+    { name: "Green / White", colors: ["#16a34a", "#ffffff"], border: true },
+    { name: "Blackout Unis", colors: ["#0b0b0b"] },
+    { name: "Whiteout Unis", colors: ["#ffffff"], border: true }
+  ];
+
+  // --- Helpers ---
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function makeSwatch(hex, needsBorder=false) {
+    const div = document.createElement("div");
+    div.style.width = "34px";
+    div.style.height = "34px";
+    div.style.borderRadius = "10px";
+    div.style.background = hex;
+    div.style.border = needsBorder ? "1px solid #cbd5e1" : "none";
+    div.title = hex;
+    return div;
+  }
+
+  function renderSwatches(combo) {
+    const swatches = document.getElementById("colorSwatches");
+    swatches.innerHTML = "";
+
+    combo.colors.forEach(c => swatches.appendChild(makeSwatch(c, combo.border)));
+    const label = document.createElement("span");
+    label.className = "ms-2 badge text-bg-light border";
+    label.textContent = combo.name;
+    swatches.appendChild(label);
+  }
+
+  // --- Elements ---
+  const sportSelect = document.getElementById("sportSelect");
+  const generateBtn = document.getElementById("generateBtn");
+  const regenBtn = document.getElementById("regenBtn");
+  const copyBtn = document.getElementById("copyBtn");
+
+  const outputCard = document.getElementById("outputCard");
+  const helperText = document.getElementById("helperText");
+
+  const teamNameEl = document.getElementById("teamName");
+  const teamMetaEl = document.getElementById("teamMeta");
+  const sportBadgeEl = document.getElementById("sportBadge");
+
+  // --- Main action ---
+  function generateTeam() {
+    const sport = sportSelect.value;
+    if (!sport) {
+      helperText.innerHTML = "Please choose a sport first.";
+      helperText.classList.add("text-danger");
+      setTimeout(() => helperText.classList.remove("text-danger"), 1200);
+      return;
+    }
+
+    const city = pick(cities);
+    const beginner = pick(beginners);
+    const mascot = pick(mascots);
+    const combo = pick(colorCombos);
+
+    const teamName = `${beginner} ${mascot}`;
+
+    teamNameEl.textContent = teamName;
+    teamMetaEl.textContent = `${sport} • ${city}`;
+    sportBadgeEl.textContent = sport;
+
+    renderSwatches(combo);
+
+    outputCard.style.display = "block";
+    helperText.textContent = "Generated! Want another? Hit Generate Another.";
+  }
+
+  generateBtn.addEventListener("click", generateTeam);
+
+  regenBtn?.addEventListener("click", generateTeam);
+
+  copyBtn?.addEventListener("click", async () => {
+    const text = teamNameEl.textContent || "";
+    try {
+      await navigator.clipboard.writeText(text);
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => copyBtn.textContent = "Copy Team Name", 900);
+    } catch {
+      // Fallback: do nothing
+      copyBtn.textContent = "Copy failed";
+      setTimeout(() => copyBtn.textContent = "Copy Team Name", 900);
+    }
+  });
+</script>
+
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">© Colin Heugly Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Game logic will be implemented here
+        // TODO: Add game functionality
+    </script>
+</body>
+</html>

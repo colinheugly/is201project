@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau | Bear Necessities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+        <div class="container">
+            <a class="navbar-brand" href="#">Colin Heugly</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Tableau</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="game.html">Game</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="scratch.html">Jordan?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tableau Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card mb-4">
+                        <div class="card-body">
+  <h1 class="card-title">Tableau Visualization</h1>
+  <p class="card-text">I am a lifelong Chicago Bears fan, even though I grew up in Utah. This visualization shows the most popular NFL teams by county across the United States and highlights how strongly team loyalty follows geography. Interestingly, there is not a single county in Utah where the Bears are the most popular team, which makes my fandom a bit unusual. Still, Bears fans tend to stay loyal no matter where they live.</p>
+
+  <!-- Tableau Embed -->
+  <div class="tableau-placeholder bg-light p-3 text-center mb-4" style="border-radius: 12px;">
+    <div class="tableauPlaceholder" id="viz1765951941750" style="position: relative; width: 100%;">
+      <noscript>
+        <a href="#">
+          <img alt="Most Popular NFL Teams by County"
+               src="https://public.tableau.com/static/images/8H/8HB4MK258/1_rss.png"
+               style="border: none; width: 100%;" />
+        </a>
+      </noscript>
+
+      <object class="tableauViz" style="display:none;">
+        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+        <param name="embed_code_version" value="3" />
+        <param name="path" value="shared/8HB4MK258" />
+        <param name="toolbar" value="yes" />
+        <param name="static_image" value="https://public.tableau.com/static/images/8H/8HB4MK258/1.png" />
+        <param name="animate_transition" value="yes" />
+        <param name="display_static_image" value="yes" />
+        <param name="display_spinner" value="yes" />
+        <param name="display_overlay" value="yes" />
+        <param name="display_count" value="yes" />
+        <param name="language" value="en-US" />
+      </object>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var divElement = document.getElementById('viz1765951941750');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+
+    if (divElement.offsetWidth > 800) {
+      vizElement.style.width = '100%';
+      vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+    } else if (divElement.offsetWidth > 500) {
+      vizElement.style.width = '100%';
+      vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+    } else {
+      vizElement.style.width = '100%';
+      vizElement.style.height = (divElement.offsetWidth * 1.77) + 'px';
+    }
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>
+
+  <em>Chicago Bear's Player I've Met</em>
+  <ul>
+    <li>Jaylon Johnson #33 (Active - played for University of Utah)</li>
+    <li>Brian Urlacher #54 (Hall of Famer)</li>
+  </ul>
+  <em>Other Professional Sports Teams I cheer for</em>
+  <ul>
+    <li>Utah Jazz</li>
+    <li>Utah Mammoth</li>
+    <li>Chicago Blackhawks</li>
+    <li>Chicago Cubs</li>
+  </ul>
+  <em>Teams with Less Super Bowl's then the Chicago Bears</em>
+  <ul>
+    <li>Atlanta Falcons</li>
+    <li>Minnesota Vikings</li>
+    <li>Buffalo Bills</li>
+    <li>Cincinnati Bengals</li>
+    <li>Arizona Cardinals</li>
+    <li>Jacksonville Jaguars</li>
+    <li>Carolina Panthers</li>
+    <li>Los Angeles Chargers</li>
+    <li>Tennessee Titans</li>
+    <li>Clevland Browns</li>
+    <li>Detroit Lions</li>
+    <li>Houston Texans</li>
+  </ul>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">© Colin Heugly Inc. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
